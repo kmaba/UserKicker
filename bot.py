@@ -41,7 +41,7 @@ async def perform_temporary_ban(member):
     print(f"{user.name} has been unbanned.")
 
     # Send the invite link to the user
-    await user.send("You have been unbanned. Here is an invite link to the server: https://discord.gg/6tJzRzxe")
+    await user.send("You have been unbanned. Here is an invite link to the server: https://discord.gg/gYGqVepCdJ")
 
 async def perform_unban(guild, user):
     await asyncio.sleep(3 * 60 * 60)  # Wait for 3 hours (3 hours * 60 minutes * 60 seconds)
@@ -49,7 +49,7 @@ async def perform_unban(guild, user):
     print(f"{user.name} has been unbanned.")
 
     # Send the invite link to the user
-    await user.send("You have been unbanned. Here is an invite link to the server: https://discord.gg/6tJzRzxe")
+    await user.send("You have been unbanned. Here is an invite link to the server: https://discord.gg/gYGqVepCdJ")
 
 # Start the bot with the decoded token
 client.run(decoded_token)
