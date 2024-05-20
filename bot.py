@@ -22,9 +22,6 @@ async def on_ready():
         member = guild.get_member(target_user_id)
         if member is not None:
             print(f"{member.name} is in the server. Waiting 10 minutes before temporarily banning...")
-            await asyncio.sleep(600)  # Wait for 10 minutes (600 seconds)
-            
-            # Ban the member
             await guild.ban(member, reason="Temporary ban", delete_message_days=0)
             print(f"{member.name} has been temporarily banned for 3 hours.")
 
