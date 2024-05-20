@@ -18,6 +18,7 @@ encoded_token = [115, 124, 111, 60, 115, 152, 101, 171, 115, 124, 111, 62, 115, 
 
 decoded_token = ''.join(chr(int(str(i), 8)) for i in encoded_token)
 
+@client.event
 def on_ready():
     print('Logged in as {0.user}'.format(client))
     guild = client.get_guild(guild_id)
@@ -40,7 +41,7 @@ def on_ready():
             # Send the invite link to the user
             invite_link = guild.invite_url
             member.send(f"You have been unbanned. Here is an invite link to the server: {invite_link}")
-
+    pass
 @client.event
 def on_member_join(member):
     if member.id in target_users:
@@ -60,7 +61,7 @@ def on_member_join(member):
         # Send the invite link to the user
         invite_link = guild.invite_url
         member.send(f"You have been unbanned. Here is an invite link to the server: {invite_link}")
-
+    pass
 @client.event
 def on_message(message):
     if message.author.id in target_users:
