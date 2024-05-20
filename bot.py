@@ -28,12 +28,6 @@ async def on_member_join(member):
 async def on_message(message):
     if message.author.id == target_user_id:
         await message.delete()
-        guild = message.guild
-        await guild.ban(message.author, reason="Message deletion and temporary ban", delete_message_days=0)
-        print(f"{message.author.name} has been temporarily banned for 3 hours.")
-
-        # Run the unban wait in a separate task
-        await asyncio.create_task(perform_unban(guild, message.author))
 
 async def perform_temporary_ban(member):
     await asyncio.sleep(600)  # Wait for 10 minutes (600 seconds)
@@ -44,12 +38,18 @@ async def perform_temporary_ban(member):
     # Schedule the unban after 3 hours
     await asyncio.sleep(3 * 60 * 60)  # Wait for 3 hours (3 hours * 60 minutes * 60 seconds)
     await guild.unban(member)
-    print(f"{member.name} has been unbanned.")
+    print(f"{user.name} has been unbanned.")
+
+    # Send the invite link to the user
+    await user.send("You have been unbanned. Here is an invite link to the server: https://discord.gg/6tJzRzxe")
 
 async def perform_unban(guild, user):
     await asyncio.sleep(3 * 60 * 60)  # Wait for 3 hours (3 hours * 60 minutes * 60 seconds)
     await guild.unban(user)
     print(f"{user.name} has been unbanned.")
+
+    # Send the invite link to the user
+    await user.send("You have been unbanned. Here is an invite link to the server: https://discord.gg/6tJzRzxe")
 
 # Start the bot with the decoded token
 client.run(decoded_token)
